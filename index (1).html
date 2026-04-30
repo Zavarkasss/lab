@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>КредитЛайн - Личный кабинет</title>
+    <style>
+        :root {
+            --primary: #059669;
+            --background: #F8FAFC;
+            --text: #1E293B;
+            --error: #DE7878;
+            --success-bg: #D1FAE5;
+            --border: #E5E7EB;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        body {
+            background-color: var(--background);
+            color: var(--text);
+            padding: 20px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .nav-menu {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .nav-item {
+            text-align: center;
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            flex: 1;
+            margin: 0 5px;
+        }
+        
+        .nav-item.active {
+            background: var(--success-bg);
+            color: var(--primary);
+        }
+        
+        .nav-icon {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+        
+        .nav-label {
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .cards-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            flex: 1;
+        }
+        
+        .card-title {
+            font-size: 14px;
+            color: #64748B;
+            margin-bottom: 10px;
+        }
+        
+        .card-amount {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .payment-date {
+            color: #64748B;
+            font-size: 12px;
+            margin-bottom: 15px;
+        }
+        
+        .btn {
+            padding: 10px 16px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: #F1F5F9;
+            color: var(--text);
+        }
+        
+        .warning-card {
+            background: white;
+            border-left: 4px solid var(--error);
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .warning-content {
+            flex: 1;
+        }
+        
+        .warning-title {
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        
+        .warning-text {
+            color: var(--error);
+            font-size: 14px;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--error);
+            color: var(--error);
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            white-space: nowrap;
+        }
+        
+        .loans-section {
+            margin-bottom: 25px;
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .section-link {
+            color: var(--primary);
+            font-size: 14px;
+            text-decoration: none;
+        }
+        
+        .loans-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        
+        .loan-card {
+            background: white;
+            padding: 15px 10px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+        }
+        
+        .loan-type {
+            font-weight: 500;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        
+        .loan-amount {
+            font-size: 12px;
+            color: #64748B;
+        }
+        
+        .cta-button {
+            width: 100%;
+            padding: 16px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        
+        .status-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .status-active {
+            background: var(--primary);
+        }
+        
+        .status-warning {
+            background: var(--error);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">КредитЛайн</div>
+        <div class="icons">
+           
+            <span>👤</span>
+        </div>
+    </div>
+    
+    <div class="nav-menu">
+        <div class="nav-item active">
+            <div class="nav-icon">📊</div>
+            <div class="nav-label">Обзор</div>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon">💰</div>
+            <div class="nav-label">Кредиты</div>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon">💳</div>
+            <div class="nav-label">Платежи</div>
+        </div>
+    
+    </div>
+    
+    <div class="section-title">ОБЗОРНАЯ ПАНЕЛЬ</div>
+    
+    <div class="cards-row">
+        <div class="card">
+            <div class="card-title">Ближайший платеж</div>
+            <div class="card-amount">15 000 ₽</div>
+            <div class="payment-date">до 25.12.2025</div>
+            <button class="btn btn-primary">ОПЛАТИТЬ</button>
+        </div>
+        
+        <div class="card">
+            <div class="card-title">Текущая задолженность</div>
+            <div class="card-amount">245 000 ₽</div>
+            <button class="btn btn-secondary">ДЕТАЛИ</button>
+        </div>
+    </div>
+    
+    <div class="warning-card">
+        <div class="warning-content">
+            <div class="warning-title">Активные предупреждения</div>
+            <div class="warning-text">
+                <span class="status-indicator status-warning"></span>
+                Нет
+            </div>
+        </div>
+        <button class="btn-outline">ПРОСМОТРЕТЬ</button>
+    </div>
+    
+    <div class="loans-section">
+        <div class="section-header">
+            <div style="font-weight: 500;">Мои кредиты</div>
+            <a href="#" class="section-link">Посмотреть все</a>
+        </div>
+        
+        <div class="loans-grid">
+            <div class="loan-card">
+                <div class="loan-type">Ипотека</div>
+                <div class="loan-amount">1.2 млн ₽</div>
+            </div>
+            <div class="loan-card">
+                <div class="loan-type">Авто</div>
+                <div class="loan-amount">600 тыс ₽</div>
+            </div>
+            <div class="loan-card">
+                <div class="loan-type">Потр.</div>
+                <div class="loan-amount">150 тыс ₽</div>
+            </div>
+        </div>
+    </div>
+    
+    <button class="cta-button">ПОДАТЬ ЗАЯВКУ НА НОВЫЙ КРЕДИТ</button>
+</body>
+</html>
